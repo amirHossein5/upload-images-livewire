@@ -1,2 +1,2 @@
 require('alpinejs');
-require('./bootstrap');
+// require('./bootstrap');
