@@ -13,7 +13,13 @@ class UploadImage extends Component
 
     public function updatedPictures()
     {
-        $this->validate(['pictures.*' => 'required|image'], ['image' => 'The pictures must be an image.']);
+        $this->validate(
+            ['pictures.*' => 'required|image'],
+            [
+                'image' => 'The pictures must be an image.',
+                'required'=>'picture is required'
+            ]
+        );
     }
 
     public function delete($i)
@@ -23,10 +29,13 @@ class UploadImage extends Component
 
     public function save()
     {
-        $this->validate(['pictures.*' => 'image|max:1024'], [
-            'max' => 'The pictures must not be greater than 1024 kilobytes.',
-            'image' => 'The pictures must be an image.'
-        ]);
+        $this->validate(
+            ['pictures.*' => 'image|max:1024'],
+            [
+                'max' => 'The pictures must not be greater than 1024 kilobytes.',
+                'image' => 'The pictures must be an image.'
+            ]
+        );
 
         if (count($this->pictures) !== 0) {
             foreach ($this->pictures as $picture) {

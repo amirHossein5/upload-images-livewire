@@ -11,4 +11,12 @@
     .top-44-p {
         top: 44%;
     }
+
+    .btn {
+        @apply w-full justify-center items-center p-4 bg-gray-600;
+    }
+
+    .btn-delete-sm{
+        @apply absolute right-44-p top-44-p rounded-md bg-gray-600 p-2 cursor-pointer;
+    }
 }
