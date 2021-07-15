@@ -12,7 +12,7 @@
             <span
                 wire:loading.remove
                 class="flex cursor-pointer rounded-md btn"
-                x-on:click="$refs.file.click()">
+                x-on:click="$refs.photo.click()">
                 uplaod pictures
             </span>
             {{-- upload pictures button --}}
@@ -39,7 +39,7 @@
                         <div class="relative w-full md:w-1/2 lg:w-1/3" wire:key='{{ $loop->index }}'>
 
                             <x-image-with-delete
-                            :picture="$picture->temporaryUrl()"
+                            :picture="$picture"
                             :loop="$loop->index"
                             />
 

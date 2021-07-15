@@ -1,53 +1,33 @@
 <div>
     <input
-        x-ref="file"
+        x-ref="photo"
         type="file"
         class="hidden"
         x-on:change="
-        {{-- validate size->after -> and lenght --}}
-            {{-- const validation = ($refs.file.files.length < 20 ) && ($refs.file.files.length > 0);
-($refs.file.files[0].type==='image/png' || $refs.file.files[0].type==='image/jpg')
+            const files = $refs.photo.files;
+            pictures=[]
 
-            if(validation){
+            for(let index=0  ; index<files.length; index++){
 
                 const reader = new FileReader();
                 reader.onload = (e) => {
-                    console.log(reader);
-                    photoPreview = e.target.result;
-                    $wire.set('pictures',$refs.file.result);
-                    {{-- return true; --}}
-                {{-- }
-            } --}}
-            {{-- return false; --}}
 
-                                                photoName = $refs.file.files[0].name;
-                                                {{-- $wire.set('pictures',[$refs.file.files[0].name]); --}}
-                                                const reader = new FileReader();
-                                                reader.onload = (e) => {
-                                                    photoPreview = e.target.result;
-                                                    {{-- console.log(photoPreview); --}}
+                    {{-- validation --}}
+                    if((files[index].type === 'image/png') && (files[index].size/ 1000000 < 5)){
+                        pictures.push(e.target.result);
+                    }else{
+                        $refs.photo.value = null;
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: 'fill images correctly!',
+                        })
+                    }
+                };
+                reader.readAsDataURL(files[index]);
+            };
 
-                                        {{-- error = photo is big ; ->show it in page --}}
-                                    };
-                                    console.log($refs.file.files)
-                                    for(file in $refs.file.files){
-                                        {{-- reader.readAsDataURL(file); --}}
-                                    }
-            "
-    multiple>
+            {{-- sets pictures --}}
+            $wire.set('pictures',pictures);
+        " multiple>
 </div>
-
-    {{-- validation number of images
-    <script>
-        function validationImages($event) {
-            $event.target.value = null;
-            Swal.fire({
-                icon: 'error',
-                title: 'Oops...',
-                text: 'should be fewer than 20 images!',
-            })
-            setTimeout(() => {
-                window.location.reload();
-            }, 500);
-        }
-    </script> --}}

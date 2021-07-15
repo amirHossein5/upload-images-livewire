@@ -14,10 +14,9 @@ class UploadImage extends Component
     public function updatedPictures()
     {
         $this->validate(
-            ['pictures.*' => 'required|image'],
+            ['pictures.*' => 'required'],
             [
-                'image' => 'The pictures must be an image.',
-                'required'=>'picture is required'
+                'required' => 'picture is required'
             ]
         );
     }
