@@ -12,12 +12,10 @@ class UploadImage extends Component
 
     public $pictures = [];
 
-    public function updatedPictures($value)
+    public function updatedPictures()
     {
-        // $this->pictures = json_decode($value);
-        dd($value);
         $this->validate(
-            ['pictures.*' => 'required'],
+            ['pictures.*' => 'required|image|file'],
             [
                 'required' => 'picture is required'
             ]
@@ -32,7 +30,7 @@ class UploadImage extends Component
     public function save()
     {
         $this->validate(
-            ['pictures.*' => 'required'],
+            ['pictures.*' => 'required|image|file'],
             [
                 'required' => 'picture is required'
             ]
@@ -40,8 +38,6 @@ class UploadImage extends Component
 
         if (count($this->pictures) !== 0) {
             foreach ($this->pictures as $picture) {
-                // dd($picture);
-                dd($picture);
                 $picture->store('pictures');
                 $this->pictures = [];
                 session()->flash('succses', 'stored');

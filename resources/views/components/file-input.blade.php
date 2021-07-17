@@ -1,34 +1,35 @@
 <div>
-    <input x-ref="photo" type="file" class="hidden" x-on:change="
-            const files = $refs.photo.files;
+    <input
+        x-ref="photo"
+        type="file"
+        class="hidden"
+        wire:model="pictures"
+        x-on:change="
+                const files = $refs.photo.files;
 
-            {{-- pictures=[]
-
-            for(let index=0  ; index<files.length; index++){
-
-                const reader = new FileReader();
-                reader.onload = (e) => {
-                    validation
-                    if((files[index].type.search('image') === 0) && (files[index].size/ 1000000 < 5)){
-                        pictures.push(e.target.result);
+                for(let index=0  ; index<files.length; index++){
+                    if(
+                        (files.length < 20) && (files.length > 0) && (files[index].type.search('image') === 0) && (files[index].size/ 1000000 < 5)
+                    ){
+                        return true;
                     }else{
-                        $refs.photo.value = null;
-                        Swal.fire({
-                            icon: 'error',
-                            title: 'Oops...',
-                            text: 'fill images correctly!',
-                        })
+                        validationImages($refs.photo);
                     }
-                };
-                reader.readAsDataURL(files[index]);
-            }; --}}
-
-{{-- console.log(Object.entries(files[0])); --}}
-
-            var em = {name: 'path - Copy.png', lastModified: 1595268329892}
-
-            console.log(files[0]);
-            {{-- sets pictures --}}
-            $wire.set('pictures',files[0]);
-        " multiple>
+                }
+                " multiple>
 </div>
+
+    {{-- validation number of images --}}
+    <script>
+        function validationImages(photo) {
+            photo.value = null;
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'must be correct image under 20 items!',
+            })
+            setTimeout(() => {
+                window.location.reload();
+            }, 500);
+        }
+    </script>

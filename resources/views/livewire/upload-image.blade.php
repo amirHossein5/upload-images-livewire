@@ -82,7 +82,10 @@
             Swal.fire({
                 title: @php echo json_encode(session('succses')) @endphp + '!',
                 icon: 'success',
-            })
+            });
+            setTimeout(() => {
+                window.location.reload();
+            }, 1000);
         </script>
     @endif
     @if (session()->has('fail'))
