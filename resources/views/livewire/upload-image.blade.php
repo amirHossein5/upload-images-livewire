@@ -1,5 +1,4 @@
-<section class="w-1/2 mx-auto">
-    <span class="text-white">should be fewer than 20 images</span>
+<section class="w-1/2 mx-auto pt-3">
     <form wire:submit.prevent="save" class="text-white">
         <x-upload-with-options>
 
