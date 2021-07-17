@@ -1,5 +1,4 @@
-<section class="w-1/2 mx-auto">
-    <span>should be fewer than 20 images</span>
+<section class="w-1/2 mx-auto pt-3">
     <form wire:submit.prevent="save" class="text-white">
         <x-upload-with-options>
 
@@ -12,7 +11,7 @@
             <span
                 wire:loading.remove
                 class="flex cursor-pointer rounded-md btn"
-                x-on:click="$refs.file.click()">
+                x-on:click="$refs.photo.click()">
                 uplaod pictures
             </span>
             {{-- upload pictures button --}}
@@ -39,7 +38,7 @@
                         <div class="relative w-full md:w-1/2 lg:w-1/3" wire:key='{{ $loop->index }}'>
 
                             <x-image-with-delete
-                            :picture="$picture->temporaryUrl()"
+                            :picture="$picture"
                             :loop="$loop->index"
                             />
 
@@ -83,7 +82,10 @@
             Swal.fire({
                 title: @php echo json_encode(session('succses')) @endphp + '!',
                 icon: 'success',
-            })
+            });
+            setTimeout(() => {
+                window.location.reload();
+            }, 1000);
         </script>
     @endif
     @if (session()->has('fail'))

@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use Livewire\WithFileUploads;
+use Illuminate\Support\Facades\Storage;
 
 class UploadImage extends Component
 {
@@ -14,10 +15,9 @@ class UploadImage extends Component
     public function updatedPictures()
     {
         $this->validate(
-            ['pictures.*' => 'required|image'],
+            ['pictures.*' => 'required|image|file'],
             [
-                'image' => 'The pictures must be an image.',
-                'required'=>'picture is required'
+                'required' => 'picture is required'
             ]
         );
     }
@@ -30,10 +30,9 @@ class UploadImage extends Component
     public function save()
     {
         $this->validate(
-            ['pictures.*' => 'image|max:1024'],
+            ['pictures.*' => 'required|image|file'],
             [
-                'max' => 'The pictures must not be greater than 1024 kilobytes.',
-                'image' => 'The pictures must be an image.'
+                'required' => 'picture is required'
             ]
         );
 

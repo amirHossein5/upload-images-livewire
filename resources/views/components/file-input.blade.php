@@ -1,53 +1,35 @@
 <div>
     <input
-        x-ref="file"
+        x-ref="photo"
         type="file"
         class="hidden"
+        wire:model="pictures"
         x-on:change="
-        {{-- validate size->after -> and lenght --}}
-            {{-- const validation = ($refs.file.files.length < 20 ) && ($refs.file.files.length > 0);
-($refs.file.files[0].type==='image/png' || $refs.file.files[0].type==='image/jpg')
+                const files = $refs.photo.files;
 
-            if(validation){
-
-                const reader = new FileReader();
-                reader.onload = (e) => {
-                    console.log(reader);
-                    photoPreview = e.target.result;
-                    $wire.set('pictures',$refs.file.result);
-                    {{-- return true; --}}
-                {{-- }
-            } --}}
-            {{-- return false; --}}
-
-                                                photoName = $refs.file.files[0].name;
-                                                {{-- $wire.set('pictures',[$refs.file.files[0].name]); --}}
-                                                const reader = new FileReader();
-                                                reader.onload = (e) => {
-                                                    photoPreview = e.target.result;
-                                                    {{-- console.log(photoPreview); --}}
-
-                                        {{-- error = photo is big ; ->show it in page --}}
-                                    };
-                                    console.log($refs.file.files)
-                                    for(file in $refs.file.files){
-                                        {{-- reader.readAsDataURL(file); --}}
-                                    }
-            "
-    multiple>
+                for(let index=0  ; index<files.length; index++){
+                    if(
+                        (files.length < 20) && (files.length > 0) && (files[index].type.search('image') === 0) && (files[index].size/ 1000000 < 5)
+                    ){
+                        return true;
+                    }else{
+                        validationImages($refs.photo);
+                    }
+                }
+                " multiple>
 </div>
 
-    {{-- validation number of images
+    {{-- validation number of images --}}
     <script>
-        function validationImages($event) {
-            $event.target.value = null;
+        function validationImages(photo) {
+            photo.value = null;
             Swal.fire({
                 icon: 'error',
                 title: 'Oops...',
-                text: 'should be fewer than 20 images!',
+                text: 'must be correct image under 20 items!',
             })
             setTimeout(() => {
                 window.location.reload();
             }, 500);
         }
-    </script> --}}
+    </script>

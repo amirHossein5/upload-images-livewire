@@ -6,5 +6,5 @@
         wire:click="delete({{ $loop }})">
         delete
     </span>
-    <img src="{{ $picture }}" alt="" class="p-2 w-full">
+    <img src="{{ $picture->temporaryUrl() }}" alt="" class="p-2 w-full">
 </div>
