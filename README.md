@@ -15,4 +15,4 @@ livewire - alpineJs - tailwindCss - sweet alert2
 
 |                                              |                                               |
 |----------------------------------------------|-----------------------------------------------|
-| <img src="screens/upload-image-1.png" />     |   <img src="screens/upload-image-2.png" />    |
+| <img src="screens/upload-images-1.png" />     |   <img src="screens/upload-image-2.png" />    |
