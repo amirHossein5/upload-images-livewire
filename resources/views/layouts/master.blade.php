@@ -2,19 +2,21 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
-
     @include('layouts.head-tag')
-    @yield('styles')
+    @yield('head-tag')
 
+    @include('layouts.style')
+    @yield('styles')
+    @stack('styles')
 </head>
 
-<body class="bg-gray-800 min-h-screen">
+<body class="min-h-screen bg-gray-800">
 
     @yield('content')
 
     @include('layouts.scripts')
     @yield('scripts')
-
+    @stack('scripts')
 </body>
 
 </html>

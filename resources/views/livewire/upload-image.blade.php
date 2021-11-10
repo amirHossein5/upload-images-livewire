@@ -1,16 +1,16 @@
-<section class="w-1/2 mx-auto pt-3">
+<section class="w-1/2 pt-3 mx-auto">
     <form wire:submit.prevent="save" class="text-white">
         <x-upload-with-options>
 
             {{-- upload pictures button --}}
             <span
                 wire:loading.flex
-                class="opacity-25 btn rounded-md">
+                class="rounded-md opacity-25 btn">
                 wait......
             </span>
             <span
                 wire:loading.remove
-                class="flex cursor-pointer rounded-md btn"
+                class="flex rounded-md cursor-pointer btn"
                 x-on:click="$refs.photo.click()">
                 uplaod pictures
             </span>
@@ -38,8 +38,8 @@
                         <div class="relative w-full md:w-1/2 lg:w-1/3" wire:key='{{ $loop->index }}'>
 
                             <x-image-with-delete
-                            :picture="$picture"
-                            :loop="$loop->index"
+                                :picture="$picture"
+                                :loop="$loop->index"
                             />
 
                         </div>
@@ -54,7 +54,7 @@
                     wire:loading.class.remove="cursor-pointer"
                     type="submit"
                     value="save"
-                    class="flex btn cursor-pointer rounded-md">
+                    class="flex rounded-md cursor-pointer btn">
 
                 <input
                     wire:loading.attr="disabled"
@@ -63,14 +63,14 @@
                     x-on:click="$wire.set('pictures',[])"
                     type="button"
                     value="delete all"
-                    class="mt-4 flex btn cursor-pointer rounded-md">
+                    class="flex mt-4 rounded-md cursor-pointer btn">
 
                 <input
                     wire:loading.flex
                     wire:target='save'
                     type="submit"
                     value="saving...."
-                    class="btn opacity-25 rounded-md">
+                    class="rounded-md opacity-25 btn">
             @endif
 
         </x-upload-with-options>
