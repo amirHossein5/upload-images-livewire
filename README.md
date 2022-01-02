@@ -1,6 +1,5 @@
 ### laravel livewire file upload
 
-## Packages
 
 livewire - alpineJs - tailwindCss - sweet alert2
 
