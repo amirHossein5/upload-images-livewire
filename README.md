@@ -6,9 +6,15 @@ livewire - alpineJs - tailwindCss - sweet alert2
 
 ## Installation
 
-1. ```git clone https://github.com/amirHossein5/upload-images-livewire.git```
-2. ```composer install```
-3. ```composer run-script post-root-package-install```
+```sh
+git clone https://github.com/amirstr/upload-images-livewire.git
+cd upload-images-livewire
+```
+
+```sh
+composer install
+composer run-script post-root-package-install
+```
 
 ## Screens
 
