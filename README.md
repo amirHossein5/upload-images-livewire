@@ -7,7 +7,7 @@ livewire - alpineJs - tailwindCss - sweet alert2
 ## Installation
 
 ```sh
-git clone https://github.com/amirstr/upload-images-livewire.git
+git clone https://github.com/amirHossein5/upload-images-livewire.git
 cd upload-images-livewire
 ```
 
